@@ -1,9 +1,14 @@
 {
   "name": "vsc-runner",
   "displayName": "vsc-runner",
+  "icon": "images/logo.png",
   "description": "Execute C++, Java and Python",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "publisher": "pablo-uribe",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pablo0128/Runner"
+  },
   "engines": {
     "vscode": "^1.70.0"
   },
@@ -16,6 +21,13 @@
   ],
   "main": "./extension.js",
   "contributes": {
+    "menus": {
+      "editor/title": [{
+        "command": "vsc-runner.runcode",
+        "when": "editorFocus",
+        "group": "navigation"
+      }]
+    },
     "commands": [
 		  {
       		"command": "vsc-runner.helloWorld",
@@ -26,8 +38,10 @@
         "title": "Run Code",
         "shortTitle": "Run Code",
         "category": "tools",
-        "enablement": "true",
-        "when": "editorFocus"
+        "icon":{
+          "dark": "images/play_dark.svg",
+          "light": "images/play_light.svg"
+        }
       }
 	],
   "keybindings":[
