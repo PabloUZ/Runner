@@ -1,6 +1,6 @@
 {
-  "name": "runner",
-  "displayName": "runner",
+  "name": "vsc-runner",
+  "displayName": "vsc-runner",
   "description": "Execute C++, Java and Python",
   "version": "1.0.0",
   "publisher": "pablo-uribe",
@@ -11,18 +11,18 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:runner.helloWorld",
-	  "onCommand:runner.runcode"
+    "onCommand:vsc-runner.helloWorld",
+	  "onCommand:vsc-runner.runcode"
   ],
   "main": "./extension.js",
   "contributes": {
     "commands": [
 		  {
-      		"command": "runner.helloWorld",
+      		"command": "vsc-runner.helloWorld",
       		"title": "Hello World"
     	},
       {
-        "command": "runner.runcode",
+        "command": "vsc-runner.runcode",
         "title": "Run Code",
         "shortTitle": "Run Code",
         "category": "tools",
@@ -32,7 +32,7 @@
 	],
   "keybindings":[
     {
-      "command": "runner.runcode",
+      "command": "vsc-runner.runcode",
       "key": "ctrl+alt+F5"
     }
   ]
