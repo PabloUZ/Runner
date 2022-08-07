@@ -1,15 +1,1 @@
-# Runner README
-
-## Features
-
-    An extension that helps you to run your code easily.
-
-## Supported languages
-  - C++
-  - Java
-  - Python
-
-## Release Notes
-
-  - Initial Release
-  - Added support for C++, Java and Python
+# Runner README## Features    An extension that helps you to run your code easily.## Supported languages  - C++  - Java  - Python## Release Notes  - Initial Release  - Added support for C++, Java and Python## How to use> Open the file you are working with (Make sure the language is supported). Then press the keybind **CTRL + ALT + F5** to execute the file with the integrated terminal.
