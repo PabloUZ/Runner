@@ -3,6 +3,7 @@
   "displayName": "runner",
   "description": "Execute C++, Java and Python",
   "version": "1.0.0",
+  "publisher": "pablo-uribe",
   "engines": {
     "vscode": "^1.70.0"
   },
