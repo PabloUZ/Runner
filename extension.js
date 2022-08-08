@@ -23,7 +23,7 @@ function activate(context) {
 	let run = vscode.commands.registerTextEditorCommand('vsc-runner.runcode', function () {
 		let file = String(vscode.window.activeTextEditor.document.fileName);
 		let ext;
-		let nfile = file.split('\\');
+		let nfile = (/^win/.test(process.platform) ? file.split('\\') : file.split('/'));
 		let fileId = String(vscode.window.activeTextEditor.document.languageId);
 		nfile = nfile[nfile.length - 1].split('.');
 		file = nfile[0];

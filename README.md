@@ -16,6 +16,8 @@
 ### v1.1.0
   - Added logo
   - Added run button for GUI.
+### v1.1.1
+  - Solved issue for linux.
 
 ## How to use
 

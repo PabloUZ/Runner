@@ -13,3 +13,5 @@ All notable changes to the "runner" extension will be documented in this file.
   - Added button for running easily. 
   ![example](images/example.jpg)
   - Added logo
+- v1.1.1
+  - Solved issue for linux.
