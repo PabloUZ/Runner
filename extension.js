@@ -24,6 +24,9 @@ function activate(context) {
 		let file = String(vscode.window.activeTextEditor.document.fileName);
 		let ext;
 		let nfile = (/^win/.test(process.platform) ? file.split('\\') : file.split('/'));
+		let dirTemp = (/^win/.test(process.platform) ? file.split('\\') : file.split('/'));
+		dirTemp.pop();
+		let dir = dirTemp.join(/^win/.test(process.platform) ? '\\' : '/');
 		let fileId = String(vscode.window.activeTextEditor.document.languageId);
 		nfile = nfile[nfile.length - 1].split('.');
 		file = nfile[0];
@@ -35,6 +38,7 @@ function activate(context) {
 		}
 		_terminal = vscode.window.createTerminal("code");
 		_terminal.show(false);
+		_terminal.sendText("cd "+dir);
 		vscode.window.showInformationMessage("Running "+fileId);
 		_terminal.sendText(execMap(fileId, file, ext));
 	});

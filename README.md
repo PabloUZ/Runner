@@ -18,6 +18,8 @@
   - Added run button for GUI.
 ### v1.1.1
   - Solved issue for linux.
+### v1.2.0
+  - Solved change of directory problem.
 
 ## How to use
 

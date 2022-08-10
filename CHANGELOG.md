@@ -15,3 +15,5 @@ All notable changes to the "runner" extension will be documented in this file.
   - Added logo
 - v1.1.1
   - Solved issue for linux.
+- v1.2.0
+  - Solved change of directory problem.

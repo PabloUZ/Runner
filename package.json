@@ -3,7 +3,7 @@
   "displayName": "vsc-runner",
   "icon": "images/logo.png",
   "description": "Execute C++, Java and Python",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "publisher": "pablo-uribe",
   "repository": {
     "type": "git",
