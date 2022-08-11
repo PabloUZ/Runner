@@ -20,6 +20,8 @@
   - Solved issue for linux.
 ### v1.2.0
   - Solved change of directory problem.
+### v1.2.1
+  - Solved change of directory problem in windows.
 
 ## How to use
 

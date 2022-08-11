@@ -26,7 +26,8 @@ function activate(context) {
 		let nfile = (/^win/.test(process.platform) ? file.split('\\') : file.split('/'));
 		let dirTemp = (/^win/.test(process.platform) ? file.split('\\') : file.split('/'));
 		dirTemp.pop();
-		let dir = dirTemp.join(/^win/.test(process.platform) ? '\\' : '/');
+		let dir = dirTemp.join('/');
+		vscode.window.showInformationMessage(dir);
 		let fileId = String(vscode.window.activeTextEditor.document.languageId);
 		nfile = nfile[nfile.length - 1].split('.');
 		file = nfile[0];
