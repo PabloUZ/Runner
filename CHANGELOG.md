@@ -19,3 +19,5 @@ All notable changes to the "runner" extension will be documented in this file.
   - Solved change of directory problem.
 - v1.2.1
   - Solved change of directory problem in windows.
+- v1.2.2
+  - Removed directory alert.
