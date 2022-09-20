@@ -38,19 +38,23 @@ function activate(context) {
 		}
 		_terminal = vscode.window.createTerminal("code");
 		_terminal.show(false);
-		_terminal.sendText("cd "+dir);
+		_terminal.sendText('cd "'+dir+'"');
 		vscode.window.showInformationMessage("Running "+fileId);
-		_terminal.sendText(execMap(fileId, file, ext));
+		try {
+			_terminal.sendText(execMap(fileId, file, ext, ";"));
+		}catch (e) {
+			vscode.window.showInformationMessage("Error executing");
+		}
 	});
 
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(run);
 }
 
-function execMap(langId, filename, ext){
+function execMap(langId, filename, ext, concat){
 	switch(langId){
 		case 'cpp':
-			return "g++ "+filename+"."+ext+" -o "+filename+" && ./"+filename+" && rm "+filename;
+			return 'g++ "'+filename+'.'+ext+'" -o "'+filename+'" '+ concat +' "./'+filename+'" '+concat+' rm "'+filename+'"';
 		case 'python':
 			return (/^win/.test(process.platform)? ("python "+filename+"."+ext) : ("python3 "+filename+"."+ext));
 		case 'java':

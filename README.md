@@ -24,6 +24,9 @@
   - Solved change of directory problem in windows.
 ### v1.2.2
   - Removed directory alert
+### v1.3.0
+  - Solved issue for directories with spaces in their names.
+  - PowerShell beta
 
 ## How to use
 
