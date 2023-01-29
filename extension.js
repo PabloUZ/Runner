@@ -32,6 +32,17 @@ function activate(context) {
 		file = nfile[0];
 		ext = nfile[1];
 
+		let path;
+		if(/^win/.test(process.platform)){
+			let pathT = vscode.env.shell.split('\\');
+			path = pathT[pathT.length-1];
+			pathT = path.split('.');
+			path = pathT[0];
+		}
+
+
+
+
 		let _terminal;
 		if(vscode.window.activeTerminal!=null) {
 			vscode.commands.executeCommand('workbench.action.terminal.killAll')
@@ -41,8 +52,14 @@ function activate(context) {
 		_terminal.sendText('cd "'+dir+'"');
 		vscode.window.showInformationMessage("Running "+fileId);
 		try {
-			_terminal.sendText(execMap(fileId, file, ext, ";"));
-		}catch (e) {
+			if(path=="powershell"){
+				vscode.window.showInformationMessage("PS");
+			}else if(path=="cmd"){
+				vscode.window.showInformationMessage("CMD");
+			}else{
+				_terminal.sendText(execMapUnix(fileId, file, ext, ";"));
+			}
+			}catch (e) {
 			vscode.window.showInformationMessage("Error executing");
 		}
 	});
@@ -51,7 +68,7 @@ function activate(context) {
 	context.subscriptions.push(run);
 }
 
-function execMap(langId, filename, ext, concat){
+function execMapUnix(langId, filename, ext, concat){
 	switch(langId){
 		case 'cpp':
 			return 'g++ "'+filename+'.'+ext+'" -o "'+filename+'" '+ concat +' "./'+filename+'" '+concat+' rm "'+filename+'"';
