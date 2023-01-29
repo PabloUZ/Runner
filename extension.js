@@ -47,19 +47,24 @@ function activate(context) {
 		if(vscode.window.activeTerminal!=null) {
 			vscode.commands.executeCommand('workbench.action.terminal.killAll')
 		}
-		_terminal = vscode.window.createTerminal("code");
+		_terminal = vscode.window.createTerminal(path);
 		_terminal.show(false);
-		_terminal.sendText('cd "'+dir+'"');
-		vscode.window.showInformationMessage("Running "+fileId);
+		vscode.window.showInformationMessage("Running "+fileId+" on "+path);
 		try {
 			if(path=="powershell"){
-				vscode.window.showInformationMessage("PS");
+				_terminal.sendText('cd "'+dir+'"');
+				_terminal.sendText("clear");
+				_terminal.sendText(execMapPS(fileId, file, ext));
 			}else if(path=="cmd"){
-				vscode.window.showInformationMessage("CMD");
+				_terminal.sendText('cd "'+dir+'"');
+				_terminal.sendText("cls");
+				_terminal.sendText(execMapCMD(fileId, file, ext));
 			}else{
-				_terminal.sendText(execMapUnix(fileId, file, ext, ";"));
+				_terminal.sendText('cd "'+dir+'"');
+				_terminal.sendText("clear");
+				_terminal.sendText(execMapUnix(fileId, file, ext));
 			}
-			}catch (e) {
+		}catch (e) {
 			vscode.window.showInformationMessage("Error executing");
 		}
 	});
@@ -68,14 +73,38 @@ function activate(context) {
 	context.subscriptions.push(run);
 }
 
-function execMapUnix(langId, filename, ext, concat){
+function execMapUnix(langId, filename, ext){
 	switch(langId){
 		case 'cpp':
-			return 'g++ "'+filename+'.'+ext+'" -o "'+filename+'" '+ concat +' "./'+filename+'" '+concat+' rm "'+filename+'"';
+			return 'g++ "'+filename+'.'+ext+'" -o "'+filename+'" '+ '&&' +' "./'+filename+'" '+ ';' +' rm "'+filename+'"';
 		case 'python':
-			return (/^win/.test(process.platform)? ("python "+filename+"."+ext) : ("python3 "+filename+"."+ext));
+			return (/^win/.test(process.platform) ? ('python "'+filename+'.'+ext+'"') : ('python3 "'+filename+'.'+ext+'"'));
 		case 'java':
-			return "javac "+filename+"."+ext+" && java "+filename;
+			return 'javac "'+filename+'.'+ext+'" && java "'+filename+'"';
+		default:
+			return "echo 'Error, language is not supported.'";
+	}
+}
+function execMapPS(langId, filename, ext){
+	switch(langId){
+		case 'cpp':
+			return 'g++ "'+filename+'.'+ext+'" -o "'+filename+'.exe" '+ ';' +' ./"'+filename+'.exe" '+ ';' + ' rm "'+filename+'.exe"';
+		case 'python':
+			return 'python "'+filename+'.'+ext+'"';
+		case 'java':
+			return 'javac "'+filename+'.'+ext+'" ; java "'+filename+'"';
+		default:
+			return "echo 'Error, language is not supported.'";
+	}
+}
+function execMapCMD(langId, filename, ext){
+	switch(langId){
+		case 'cpp':
+			return 'g++ "'+filename+'.'+ext+'" -o "'+filename+'.exe" '+ '&&' +' .\\"'+filename+'" '+ '&&' +' del "'+filename+'.exe"';
+		case 'python':
+			return 'python "'+filename+'.'+ext+'"';
+		case 'java':
+			return 'javac "'+filename+'.'+ext+'" && java "'+filename+'"';
 		default:
 			return "echo 'Error, language is not supported.'";
 	}
