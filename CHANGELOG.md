@@ -10,7 +10,7 @@ All notable changes to the "runner" extension will be documented in this file.
 
 
 - v1.1.0
-  - Added button for running easily. 
+  - Added button for running easily.
   ![example](images/example.jpg)
   - Added logo
 - v1.1.1
@@ -24,3 +24,5 @@ All notable changes to the "runner" extension will be documented in this file.
 - v1.3.0
   - Solved issue for directories with spaces in their names.
   - PowerShell beta
+- v2.0.0
+  - Release powershell enabled

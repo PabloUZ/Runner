@@ -27,6 +27,8 @@
 ### v1.3.0
   - Solved issue for directories with spaces in their names.
   - PowerShell beta
+### v2.0.0
+  - Release powershell enabled
 
 ## How to use
 
