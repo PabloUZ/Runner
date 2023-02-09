@@ -2,12 +2,12 @@
   "name": "vsc-runner",
   "displayName": "vsc-runner",
   "icon": "images/logo.png",
-  "description": "Execute C++, Java and Python",
-  "version": "2.0.0",
+  "description": "Execute C++, Java, Python, Javascript and typescript",
+  "version": "2.1.0",
   "publisher": "pablo-uribe",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pablo0128/Runner"
+    "url": "https://github.com/PabloUZ/Runner"
   },
   "engines": {
     "vscode": "^1.50.0"
