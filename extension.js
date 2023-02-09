@@ -81,6 +81,10 @@ function execMapUnix(langId, filename, ext){
 			return (/^win/.test(process.platform) ? ('python "'+filename+'.'+ext+'"') : ('python3 "'+filename+'.'+ext+'"'));
 		case 'java':
 			return 'javac "'+filename+'.'+ext+'" && java "'+filename+'"';
+		case 'javascript':
+			return 'node "'+filename+'.'+ext+'"';
+		case 'typescript':
+			return 'node "'+filename+'.'+ext+'"';
 		default:
 			return "echo 'Error, language is not supported.'";
 	}
@@ -93,6 +97,10 @@ function execMapPS(langId, filename, ext){
 			return 'python "'+filename+'.'+ext+'"';
 		case 'java':
 			return 'javac "'+filename+'.'+ext+'" ; java "'+filename+'"';
+		case 'javascript':
+			return 'node "'+filename+'.'+ext+'"';
+		case 'typescript':
+				return 'node "'+filename+'.'+ext+'"';
 		default:
 			return "echo 'Error, language is not supported.'";
 	}
@@ -105,6 +113,10 @@ function execMapCMD(langId, filename, ext){
 			return 'python "'+filename+'.'+ext+'"';
 		case 'java':
 			return 'javac "'+filename+'.'+ext+'" && java "'+filename+'"';
+		case 'javascript':
+			return 'node "'+filename+'.'+ext+'"';
+		case 'typescript':
+			return 'node "'+filename+'.'+ext+'"';
 		default:
 			return "echo 'Error, language is not supported.'";
 	}

@@ -26,3 +26,5 @@ All notable changes to the "runner" extension will be documented in this file.
   - PowerShell beta
 - v2.0.0
   - Release powershell enabled
+- v2.1.0
+  - Added javascript and typescript commands

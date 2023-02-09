@@ -8,6 +8,8 @@
   - C++
   - Java
   - Python
+  - Javascript
+  - Typescript
 
 ## Release Notes
 ### v1.0.0
@@ -29,6 +31,8 @@
   - PowerShell beta
 ### v2.0.0
   - Release powershell enabled
+### v2.1.0
+  - Added javascript and typescript commands
 
 ## How to use
 
